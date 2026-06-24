@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log In — Stackly Research Lab</title>
+<meta name="description" content="Log in to your Stackly research portal.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="lock">
+
+<div class="preloader"><span class="preloader-mark">Stackly Labs</span><span class="preloader-pct">0%</span><div class="preloader-bar"><i></i></div></div>
+<div class="grain"></div><div class="cursor-dot"></div><div class="cursor-ring"></div>
+
+<div class="auth-screen">
+  <div class="auth-visual">
+    <img src="https://images.unsplash.com/photo-1606206873764-fd15e242df52?auto=format&fit=crop&w=2000&q=80" alt="Researcher working in the Stackly laboratory at night" loading="lazy">
+    <div class="auth-visual-content">
+      <span class="eyebrow" style="margin-bottom:18px;">Case file no. 0410 — Access</span>
+      <h3>Every login is a checkpoint in the chain of custody.</h3>
+      <p>Researcher, student and admin accounts all run through the same audited access log — because data integrity starts at the door.</p>
+    </div>
+  </div>
+  <div class="auth-panel">
+    <div class="auth-box">
+      <a href="index.html" class="nav-logo" style="margin-bottom:28px;display:flex;">
+        <img src="./stackly-removebg-preview.png" alt="STACKLY" class="nav-logo-img"></a>
+
+      <div class="auth-tabs">
+        <a href="login.html" class="active">Sign In</a>
+        <a href="signup.html">Sign Up</a>
+      </div>
+
+      <span class="eyebrow">Welcome back</span>
+      <h2>Log in to your portal</h2>
+      <p class="lede">Choose your account type, then sign in with your lab credentials.</p>
+
+      <div class="role-toggle">
+        <button class="active" data-role="user">Researcher</button>
+        <button data-role="admin">Admin</button>
+      </div>
+
+      <form id="loginForm">
+        <div class="field-group"><label>Full Name</label><input type="text" id="loginName" placeholder="Jin Liu" required></div>
+        <div class="field-group"><label>Email Address</label><input type="email" id="loginEmail" placeholder="you@stacklylabs.com" required></div>
+        <div class="field-group">
+          <label>Password</label>
+          <input type="password" placeholder="••••••••••" required>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;">
+          <label class="check-row"><input type="checkbox"> Remember me</label>
+          <a href="#" style="font-size:13px;color:var(--teal);">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block magnetic" id="loginSubmit"><span>Log In</span></button>
+      </form>
+
+      <div class="auth-divider">Or continue with</div>
+      <div class="auth-alt">
+        <button class="btn btn-ghost magnetic" style="border:1px solid var(--ink-line-2);"><span>Google</span></button>
+        <button class="btn btn-ghost magnetic" style="border:1px solid var(--ink-line-2);"><span>ORCID</span></button>
+        <p class="auth-foot"><a href="index.html">Back To Home →</a></p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/SplitText.min.js"></script>
+<script src="main.js"></script>
+<script>
+  // Fallback shim: if main.js hasn't defined window.StacklyAuth yet, provide a
+  // minimal compatible implementation so this page never breaks on its own.
+  window.StacklyAuth = window.StacklyAuth || (function () {
+    function key(role) { return 'stackly_' + role + '_account'; }
+    return {
+      saveAccount: function (role, account) {
+        localStorage.setItem(key(role), JSON.stringify(account));
+      },
+      getAccount: function (role) {
+        try { return JSON.parse(localStorage.getItem(key(role))); } catch (_) { return null; }
+      },
+      startSession: function (role, account) {
+        localStorage.setItem('stackly_session', JSON.stringify({ role: role, name: account.name, email: account.email }));
+      },
+      resolveSession: function (role) {
+        try {
+          const s = JSON.parse(localStorage.getItem('stackly_session'));
+          return (s && s.role === role) ? s : null;
+        } catch (_) { return null; }
+      },
+      initials: function (name) {
+        return (name || '').replace(/^(Dr|Prof|Mr|Ms|Mrs)\.?\s+/i, '').trim()
+          .split(/\s+/).map(w => w[0] || '').join('').toUpperCase().slice(0, 2);
+      },
+      clearSession: function () {
+        localStorage.removeItem('stackly_session');
+      }
+    };
+  })();
+</script>
+<script>
+  // Role toggle → keep the Full Name placeholder relevant to the selected account type
+  (function () {
+    const nameInput = document.getElementById('loginName');
+    document.querySelectorAll('.role-toggle button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        nameInput.placeholder = btn.dataset.role === 'admin' ? 'Dr. Amara Osei' : 'Jin Liu';
+      });
+    });
+  })();
+</script>
+<script>
+  // Pick up the handoff from Sign Up (?name=&email=&role=). Persists the
+  // just-created account in this browser AND prefills the form, so the name
+  // no longer silently falls back to the demo default after signing up.
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const sName = params.get('name');
+    const sEmail = params.get('email');
+    const sRole = params.get('role');
+    if (sName) {
+      window.StacklyAuth.saveAccount(sRole || 'user', { name: sName, email: sEmail || '' });
+      const nameInput = document.getElementById('loginName');
+      const emailInput = document.getElementById('loginEmail');
+      if (nameInput) nameInput.value = sName;
+      if (emailInput && sEmail) emailInput.value = sEmail;
+      if (sRole) {
+        document.querySelectorAll('.role-toggle button').forEach(b => {
+          b.classList.toggle('active', b.dataset.role === sRole);
+        });
+      }
+    }
+  })();
+</script>
+<script>
+  // Log in using the name typed into the form first — this is what guarantees
+  // "Welcome, {name}" shows up correctly on the dashboard every time, with no
+  // dependency on Sign Up having run first or on localStorage carrying over
+  // between files. Falls back to a saved account, then a demo name, only if
+  // the Full Name field was left empty.
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const role = document.querySelector('.role-toggle button.active').dataset.role;
+    const typedName = document.getElementById('loginName').value.trim();
+    const email = document.getElementById('loginEmail').value.trim();
+
+    const saved = window.StacklyAuth.getAccount(role);
+    const fallback = role === 'admin'
+      ? { name: 'Dr. Amara Osei', email: 'amara.osei@stacklylabs.com' }
+      : { name: 'Jin Liu', email: 'jin.liu@stacklylabs.com' };
+
+    const account = saved || fallback;
+    const name = typedName || account.name;
+    const finalEmail = email || account.email;
+
+    window.StacklyAuth.saveAccount(role, { name, email: finalEmail });
+    window.StacklyAuth.startSession(role, { name, email: finalEmail });
+
+    const dest = role === 'admin' ? 'admin-dashboard.html' : 'user-dashboard.html';
+    const params = new URLSearchParams({ name, email: finalEmail });
+    window.location.href = dest + '?' + params.toString();
+  });
+</script>
+</body>
+</html>

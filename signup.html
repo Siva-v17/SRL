@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up — Stackly Research Lab</title>
+<meta name="description" content="Create a researcher or admin account for your Stackly research portal.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="lock">
+
+<div class="preloader"><span class="preloader-mark">Stackly Labs</span><span class="preloader-pct">0%</span><div class="preloader-bar"><i></i></div></div>
+<div class="grain"></div><div class="cursor-dot"></div><div class="cursor-ring"></div>
+
+<div class="auth-screen">
+  <div class="auth-visual">
+    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=2000&q=80" alt="Researcher being onboarded into the Stackly laboratory" loading="lazy">
+    <div class="auth-visual-content">
+      <span class="eyebrow" style="margin-bottom:18px;">Case file no. 0411 — Onboarding</span>
+      <h3>Every account starts with a name on the access log.</h3>
+      <p>Create a researcher account to track your projects and bookings, or an admin account to manage the lab.</p>
+    </div>
+  </div>
+  <div class="auth-panel">
+    <div class="auth-box">
+      <a href="index.html" class="nav-logo" style="margin-bottom:40px;display:flex;"><img src="./stackly-removebg-preview.png" alt="STACKLY" class="nav-logo-img"></a>
+      <span class="eyebrow">New here</span>
+      <h2>Create your account</h2>
+      <p class="lede">Choose your account type, then fill in your details to get lab access.</p>
+
+      <div class="role-toggle">
+        <button class="active" data-role="user">Researcher</button>
+        <button data-role="admin">Admin</button>
+      </div>
+      <p class="role-hint" id="roleHint">Researcher accounts get a personal dashboard for projects, bookings and datasets.</p>
+
+      <form id="signupForm" novalidate>
+        <div class="field-group"><label>Full Name</label><input type="text" id="suName" placeholder="Jordan Reyes" required></div>
+        <div class="field-group"><label>Email Address</label><input type="email" id="suEmail" placeholder="you@stacklylabs.com" required></div>
+        <div class="field-row">
+          <div class="field-group"><label>Password</label><input type="password" id="suPassword" placeholder="••••••••••" required minlength="6"></div>
+          <div class="field-group"><label>Confirm Password</label><input type="password" id="suConfirm" placeholder="••••••••••" required minlength="6"></div>
+        </div>
+        <p id="signupError" style="color:var(--rose);font-size:13px;margin:-10px 0 18px;display:none;"></p>
+        <label class="check-row" style="margin-bottom:26px;"><input type="checkbox" required> I agree to the lab's data-handling and access policy.</label>
+        <button type="submit" class="btn btn-primary btn-block magnetic"><span>Create Account</span></button>
+      </form>
+
+      <div class="auth-divider">Or sign up with</div>
+      <div class="auth-alt">
+        <button class="btn btn-ghost magnetic" style="border:1px solid var(--ink-line-2);"><span>Google</span></button>
+        <button class="btn btn-ghost magnetic" style="border:1px solid var(--ink-line-2);"><span>ORCID</span></button>
+      </div>
+
+      <p class="auth-foot">Already have an account? <a href="login.html">Log in →</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SUCCESS MODAL ============ -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box">
+    <div class="modal-icon">✓</div>
+    <h3>Account created successfully</h3>
+    <p>Your lab access has been registered. Redirecting you to sign in…</p>
+    <a href="login.html" class="btn btn-primary magnetic"><span>Continue to Sign In</span></a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/SplitText.min.js"></script>
+<script src="main.js"></script>
+<script>
+  const roleHint = document.getElementById('roleHint');
+  document.querySelectorAll('.role-toggle button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      roleHint.textContent = btn.dataset.role === 'admin'
+        ? 'Admin accounts get full lab oversight: researchers, projects, reports and bookings.'
+        : 'Researcher accounts get a personal dashboard for projects, bookings and datasets.';
+    });
+  });
+
+  document.getElementById('signupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const role = document.querySelector('.role-toggle button.active').dataset.role;
+    const name = document.getElementById('suName').value.trim();
+    const email = document.getElementById('suEmail').value.trim();
+    const pw = document.getElementById('suPassword').value;
+    const confirm = document.getElementById('suConfirm').value;
+    const errorEl = document.getElementById('signupError');
+
+    if (!name || !email || pw.length < 6) {
+      errorEl.textContent = 'Please fill in every field with a password of at least 6 characters.';
+      errorEl.style.display = 'block';
+      return;
+    }
+    if (pw !== confirm) {
+      errorEl.textContent = "Passwords don't match — please re-enter them.";
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+
+    // Demo-only: persist the account in this browser so login can greet you by name
+    window.StacklyAuth.saveAccount(role, { name, email });
+
+    const modal = document.getElementById('successModal');
+    modal.classList.add('show');
+    setTimeout(() => { window.location.href = 'login.html'; }, 2200);
+  });
+</script>
+</body>
+</html>

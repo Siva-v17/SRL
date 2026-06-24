@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Stackly Research Lab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grain"></div><div class="cursor-dot"></div><div class="cursor-ring"></div>
+
+<!-- MOBILE TOP BAR -->
+<div class="dash-mobile-bar">
+  <a href="index.html" class="dash-brand">
+    <img src="./stackly-removebg-preview.png" alt="STACKLY">
+    <span>STACKLY</span>
+  </a>
+  <div class="mob-user">
+    <b id="mobName">Admin</b>
+    <div class="mob-avatar" id="mobAvatar">AO</div>
+  </div>
+  <button class="dash-mob-toggle" id="drawerToggle">&#9776;</button>
+</div>
+
+<!-- SLIDE-IN DRAWER -->
+<div class="dash-side-drawer" id="sideDrawer">
+  <div class="dash-side-drawer-overlay" id="drawerOverlay"></div>
+  <div class="dash-side-drawer-panel">
+
+    <!-- Fixed header -->
+    <div class="drawer-header">
+      <a href="index.html" class="dash-brand">
+        <img src="./stackly-removebg-preview.png" alt="STACKLY">
+        <!-- <span>STACKLY</span> -->
+      </a>
+      <button class="drawer-close" id="drawerClose">&#10005;</button>
+    </div>
+    <div class="drawer-user-footer">
+      <div class="avatar" id="drawerAvatar">AO</div>
+      <div>
+        <b id="drawerName">Dr. Amara Osei</b>
+        <span id="drawerRole">Admin · Director</span>
+      </div>
+    </div>
+    <!-- Scrollable nav -->
+    <div class="drawer-nav-scroll">
+      <nav class="dash-nav">
+        <span class="group-label">Overview</span>
+        <a href="#" class="active"><span class="dot"></span>Dashboard</a>
+        <a href="#"><span class="dot"></span>Analytics</a>
+        <span class="group-label">Management</span>
+        <a href="#"><span class="dot"></span>Researchers</a>
+        <a href="#"><span class="dot"></span>Research Projects</a>
+        <a href="#"><span class="dot"></span>Publications</a>
+        <a href="#"><span class="dot"></span>Lab Bookings</a>
+        <span class="group-label">System</span>
+        <a href="#"><span class="dot"></span>Reports</a>
+        <a href="#"><span class="dot"></span>Access Logs</a>
+        <a href="#"><span class="dot"></span>Settings</a>
+        <a href="login.html" id="drawerLogout"><span class="dot"></span>Log Out</a>
+      </nav>
+    </div>
+
+    <!-- Fixed user footer -->
+
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="dash">
+  <aside class="dash-side">
+    <a href="index.html" class="dash-brand">
+      <img src="./stackly-removebg-preview.png" alt="STACKLY">
+      <!-- <span style="font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;">STACKLY</span> -->
+    </a>
+    <div class="dash-user">
+      <div class="avatar" id="sessAvatar">AO</div>
+      <div>
+        <b id="sessName">Dr. Amara Osei</b>
+        <!-- <span id="sessRole">Admin · Director</span> -->
+        <span class="dash-user-email" id="sessEmail">amara.osei@stacklylabs.com</span>
+      </div>
+    </div>
+    <nav class="dash-nav">
+      <span class="group-label">Overview</span>
+      <a href="#" class="active"><span class="dot"></span>Dashboard</a>
+      <a href="./error.html"><span class="dot"></span>Analytics</a>
+      <span class="group-label">Management</span>
+      <a href="./error.html"><span class="dot"></span>Researchers</a>
+      <a href="./error.html"><span class="dot"></span>Research Projects</a>
+      <a href="./error.html"><span class="dot"></span>Publications</a>
+      <a href="./error.html"><span class="dot"></span>Lab Bookings</a>
+      <span class="group-label">System</span>
+      <a href="./error.html"><span class="dot"></span>Reports</a>
+      <a href="./error.html"><span class="dot"></span>Access Logs</a>
+      <a href="./error.html"><span class="dot"></span>Settings</a>
+      <a href="login.html" id="logoutBtn"><span class="dot"></span>Log Out</a>
+      <!-- <a href="index.html" id="logoutBtn"><span class="dot"></span>Home</a> -->
+    </nav>
+    
+  </aside>
+
+  <main class="dash-main">
+    <div class="dash-top">
+      <div>
+        <h1 id="sessGreeting">Lab Admin Overview</h1>
+        <div class="sub">Wednesday, 24 June 2026<span id="sessSubEmail"></span></div>
+      </div>
+      <div class="dash-actions">
+        <div class="dash-search"><span>&#8981;</span><input type="text" placeholder="Search researchers, projects, papers&hellip;"></div>
+        <button class="icon-btn">&#128276;<span class="badge"></span></button>
+        <button class="icon-btn">&#9881;</button>
+        <a href="#" class="btn btn-primary btn-sm magnetic"><span>+ New Project</span></a>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="top"><div class="ic" style="background:var(--teal);">&#128101;</div><span class="delta up">+4.2%</span></div>
+        <div class="v"><span data-count="86">0</span></div><div class="l">Active Researchers</div>
+      </div>
+      <div class="stat-card">
+        <div class="top"><div class="ic" style="background:var(--violet);">&#129514;</div><span class="delta up">+8.0%</span></div>
+        <div class="v"><span data-count="48">0</span></div><div class="l">Ongoing Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="top"><div class="ic" style="background:var(--amber);">&#128196;</div><span class="delta up">+12.5%</span></div>
+        <div class="v"><span data-count="214">0</span></div><div class="l">Total Publications</div>
+      </div>
+      <div class="stat-card">
+        <div class="top"><div class="ic" style="background:var(--rose);">&#9202;</div><span class="delta down">-2.1%</span></div>
+        <div class="v"><span data-count="6">0</span></div><div class="l">Overdue Reports</div>
+      </div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="panel">
+        <div class="panel-head"><h3>Publications by Division &mdash; Last 6 Months</h3><a href="#">Export CSV</a></div>
+        <div class="chart-wrap">
+          <div class="col" data-h="62"><span>Jan</span></div>
+          <div class="col" data-h="48"><span>Feb</span></div>
+          <div class="col" data-h="74"><span>Mar</span></div>
+          <div class="col" data-h="55"><span>Apr</span></div>
+          <div class="col" data-h="88"><span>May</span></div>
+          <div class="col" data-h="69"><span>Jun</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Project Progress</h3><a href="#">View all</a></div>
+        <ul class="progress-list">
+          <li><div class="pl-top"><span>Targeted Delivery Vector &mdash; GX-114</span><span>82%</span></div><div class="pl-bar"><i data-fill="82" style="background:var(--teal);"></i></div></li>
+          <li><div class="pl-top"><span>Ambient Composite Fabrication &mdash; MX-027</span><span>64%</span></div><div class="pl-bar"><i data-fill="64" style="background:var(--violet);"></i></div></li>
+          <li><div class="pl-top"><span>Ocean Carbon Sink Model &mdash; CX-340</span><span>91%</span></div><div class="pl-bar"><i data-fill="91" style="background:var(--amber);"></i></div></li>
+          <li><div class="pl-top"><span>Digital Twin Fatigue Trial &mdash; DX-205</span><span>37%</span></div><div class="pl-bar"><i data-fill="37" style="background:var(--rose);"></i></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="panel">
+        <div class="panel-head"><h3>Recent Researchers</h3><a href="#">Manage all</a></div>
+        <table class="data-table">
+          <thead><tr><th>Researcher</th><th>Division</th><th>Active Projects</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><div class="row-avatar"><div class="dot-avatar">AO</div>Dr. Amara Osei</div></td><td>Genomics</td><td>3</td><td><span class="status-pill ok">Active</span></td></tr>
+            <tr><td><div class="row-avatar"><div class="dot-avatar">FB</div>Dr. Felix Bauer</div></td><td>Materials</td><td>4</td><td><span class="status-pill ok">Active</span></td></tr>
+            <tr><td><div class="row-avatar"><div class="dot-avatar">PN</div>Dr. Priya Nandakumar</div></td><td>Computation</td><td>2</td><td><span class="status-pill pending">On Leave</span></td></tr>
+            <tr><td><div class="row-avatar"><div class="dot-avatar">MR</div>Dr. Mateo Rinaldi</div></td><td>Climate</td><td>5</td><td><span class="status-pill ok">Active</span></td></tr>
+            <tr><td><div class="row-avatar"><div class="dot-avatar">JL</div>Jin Liu, PhD Cand.</div></td><td>Computation</td><td>1</td><td><span class="status-pill alert">Access Expiring</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Activity Log</h3><a href="#">View all</a></div>
+        <ul class="activity-feed">
+          <li><div class="dot-time"></div><div><p><b>Dr. Bauer</b> filed patent application MX-027-B.</p><span>14 min ago</span></div></li>
+          <li><div class="dot-time"></div><div><p><b>Dr. Rinaldi</b> uploaded 12,000 new sensor readings.</p><span>52 min ago</span></div></li>
+          <li><div class="dot-time"></div><div><p><b>System</b> flagged report DX-205 as overdue.</p><span>2 hrs ago</span></div></li>
+          <li><div class="dot-time"></div><div><p><b>Jin Liu</b> requested wet-lab booking for Jul 3.</p><span>5 hrs ago</span></div></li>
+          <li><div class="dot-time"></div><div><p><b>Dr. Osei</b> approved access for 2 new students.</p><span>Yesterday</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:22px;">
+      <div class="panel-head"><h3>Upcoming Lab Bookings</h3><a href="#">Manage schedule</a></div>
+      <table class="data-table">
+        <thead><tr><th>Instrument / Room</th><th>Booked By</th><th>Date</th><th>Duration</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Wet Lab B &mdash; Bldg. 3</td><td>Jin Liu</td><td>03 Jul 2026</td><td>4 hrs</td><td><span class="status-pill pending">Pending Approval</span></td></tr>
+          <tr><td>Electron Microscope 02</td><td>Dr. Felix Bauer</td><td>04 Jul 2026</td><td>2 hrs</td><td><span class="status-pill ok">Confirmed</span></td></tr>
+          <tr><td>Climate Modelling Cluster</td><td>Dr. Mateo Rinaldi</td><td>05 Jul 2026</td><td>Full day</td><td><span class="status-pill ok">Confirmed</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/SplitText.min.js"></script>
+<script src="main.js"></script>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var name  = params.get('name');
+    var email = params.get('email');
+    if (!name) {
+      try { var s=JSON.parse(localStorage.getItem('stackly_session')||'null'); if(s&&s.name){name=s.name;email=email||s.email;} } catch(_){}
+    }
+    if (!name)  name  = 'Dr. Amara Osei';
+    if (!email) email = 'amara.osei@stacklylabs.com';
+
+    function initials(n){
+      var c=n.replace(/^(Dr|Prof|Mr|Ms|Mrs)\.?\s+/i,'').trim().split(/\s+/);
+      return ((c[0]?c[0][0]:'')+(c[1]?c[1][0]:'')).toUpperCase();
+    }
+    var ig=initials(name);
+
+    document.getElementById('sessAvatar').textContent   = ig;
+    document.getElementById('sessName').textContent     = name;
+    document.getElementById('sessRole').textContent     = 'Admin · Director';
+    document.getElementById('sessGreeting').textContent = 'Welcome, ' + name;
+    document.getElementById('sessEmail').textContent    = email;
+    document.getElementById('sessSubEmail').textContent = ' · ' + email;
+    document.getElementById('mobName').textContent      = name;
+    document.getElementById('mobAvatar').textContent    = ig;
+    document.getElementById('drawerAvatar').textContent = ig;
+    document.getElementById('drawerName').textContent   = name;
+    document.getElementById('drawerRole').textContent   = 'Admin · Director';
+
+    function logout(){ localStorage.removeItem('stackly_session'); }
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+    document.getElementById('drawerLogout').addEventListener('click', logout);
+  })();
+
+  (function(){
+    var drawer  = document.getElementById('sideDrawer');
+    var toggle  = document.getElementById('drawerToggle');
+    var close   = document.getElementById('drawerClose');
+    var overlay = document.getElementById('drawerOverlay');
+
+    if (!drawer || !toggle) return;
+
+    function openDrawer()  { drawer.classList.add('open');    document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { drawer.classList.remove('open'); document.body.style.overflow = ''; }
+
+    toggle.addEventListener('click',  openDrawer);
+    close.addEventListener('click',   closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDrawer(); });
+  })();
+</script>
+</body>
+</html>

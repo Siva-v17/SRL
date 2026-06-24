@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard — Stackly Research Lab</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grain"></div><div class="cursor-dot"></div><div class="cursor-ring"></div>
+
+<!-- MOBILE TOP BAR -->
+<div class="dash-mobile-bar">
+  <a href="index.html" class="dash-brand">
+    <img src="./stackly-removebg-preview.png" alt="STACKLY">
+    <!-- <span>STACKLY</span> -->
+  </a>
+  <div class="mob-user">
+    <b id="mobName">User</b>
+    <div class="mob-avatar" id="mobAvatar">??</div>
+  </div>
+  <button class="dash-mob-toggle" id="drawerToggle">&#9776;</button>
+</div>
+
+<!-- SLIDE-IN DRAWER -->
+<div class="dash-side-drawer" id="sideDrawer">
+  <div class="dash-side-drawer-overlay" id="drawerOverlay"></div>
+  <div class="dash-side-drawer-panel">
+
+    <!-- Fixed header -->
+    <div class="drawer-header">
+      <a href="index.html" class="dash-brand">
+        <img src="./stackly-removebg-preview.png" alt="STACKLY">
+        <!-- <span>STACKLY</span> -->
+      </a>
+      <button class="drawer-close" id="drawerClose">&#10005;</button>
+    </div>
+    <div class="drawer-user-footer">
+      <div class="avatar" id="drawerAvatar">??</div>
+      <div>
+        <b id="drawerName">User</b>
+        <span id="drawerRole">Researcher</span>
+      </div>
+    </div>
+    <!-- Scrollable nav -->
+    <div class="drawer-nav-scroll">
+      <nav class="dash-nav">
+        <span class="group-label">My Workspace</span>
+        <a href="#" class="active"><span class="dot"></span>Overview</a>
+        <a href="#"><span class="dot"></span>My Projects</a>
+        <a href="#"><span class="dot"></span>Lab Bookings</a>
+        <a href="#"><span class="dot"></span>Publications</a>
+        <span class="group-label">Resources</span>
+        <a href="#"><span class="dot"></span>Datasets</a>
+        <a href="#"><span class="dot"></span>Messages</a>
+        <a href="#"><span class="dot"></span>Equipment Manuals</a>
+        <span class="group-label">Account</span>
+        <a href="#"><span class="dot"></span>Settings</a>
+        <a href="login.html" id="drawerLogout"><span class="dot"></span>Log Out</a>
+      </nav>
+    </div>
+
+    <!-- Fixed user footer -->
+
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="dash">
+
+  <!-- DESKTOP SIDEBAR -->
+  <aside class="dash-side">
+    <a href="index.html" class="dash-brand">
+      <img src="./stackly-removebg-preview.png" alt="STACKLY">
+      <!-- <span style="font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;">STACKLY</span> -->
+    </a>
+    <div class="dash-user" style="margin-bottom:20px;margin-top:0;border-top:none;border-bottom:1px solid var(--ink-line);padding-bottom:18px;">
+      <div class="avatar" id="sessAvatar">JL</div>
+      <div>
+        <b id="sessName">Jin Liu</b>
+        <!-- <span id="sessRole">PhD Candidate · Computation</span> -->
+        <span class="dash-user-email" id="sessEmail">jin.liu@stacklylabs.com</span>
+      </div>
+    </div>
+    <nav class="dash-nav">
+      <span class="group-label">My Workspace</span>
+      <a href="error.html" class="active"><span class="dot"></span>Overview</a>
+      <a href="error.html"><span class="dot"></span>My Projects</a>
+      <a href="error.html"><span class="dot"></span>Lab Bookings</a>
+      <a href="error.html"><span class="dot"></span>Publications</a>
+      <span class="group-label">Resources</span>
+      <a href="error.html"><span class="dot"></span>Datasets</a>
+      <a href="error.html"><span class="dot"></span>Messages</a>
+      <a href="error.html"><span class="dot"></span>Equipment Manuals</a>
+      <span class="group-label">Account</span>
+      <a href="error.html"><span class="dot"></span>Settings</a>
+      <a href="login.html" id="logoutBtn"><span class="dot"></span>Log Out</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dash-main">
+    <div class="dash-top">
+      <div>
+        <h1 id="sessGreeting">Welcome back Researcher, Jin</h1>
+        <div class="sub">Wednesday, 24 June 2026<span id="sessSubEmail"></span></div>
+      </div>
+      <div class="dash-actions">
+        <div class="dash-search"><span>&#8981;</span><input type="text" placeholder="Search your projects, datasets&hellip;"></div>
+        <button class="icon-btn">&#128276;<span class="badge"></span></button>
+        <button class="icon-btn">&#9881;</button>
+        <a href="#" class="btn btn-primary btn-sm magnetic"><span>+ Book Lab Time</span></a>
+      </div>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="top"><div class="ic" style="background:var(--teal);">&#129514;</div><span class="delta up">+1</span></div>
+        <div class="v"><span data-count="3">0</span></div><div class="l">Active Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="top"><div class="ic" style="background:var(--violet);">&#128196;</div><span class="delta up">+2</span></div>
+        <div class="v"><span data-count="5">0</span></div><div class="l">Co-Authored Papers</div>
+      </div>
+      <div class="stat-card">
+        <div class="top"><div class="ic" style="background:var(--amber);">&#9200;</div></div>
+        <div class="v"><span data-count="14">0</span>h</div><div class="l">Lab Time This Week</div>
+      </div>
+      <div class="stat-card">
+        <div class="top"><div class="ic" style="background:var(--rose);">&#9888;</div></div>
+        <div class="v"><span data-count="1">0</span></div><div class="l">Access Renewals Due</div>
+      </div>
+    </div>
+
+    <!-- CHART + PROGRESS -->
+    <div class="dash-grid">
+      <div class="panel">
+        <div class="panel-head"><h3>My Simulation Hours &mdash; Last 6 Weeks</h3><a href="#">Export</a></div>
+        <div class="chart-wrap">
+          <div class="col" data-h="40"><span>W1</span></div>
+          <div class="col" data-h="58"><span>W2</span></div>
+          <div class="col" data-h="35"><span>W3</span></div>
+          <div class="col" data-h="72"><span>W4</span></div>
+          <div class="col" data-h="64"><span>W5</span></div>
+          <div class="col" data-h="80"><span>W6</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>My Project Progress</h3><a href="#">View all</a></div>
+        <ul class="progress-list">
+          <li><div class="pl-top"><span>Digital Twin Fatigue Trial &mdash; DX-205</span><span>37%</span></div><div class="pl-bar"><i data-fill="37" style="background:var(--teal);"></i></div></li>
+          <li><div class="pl-top"><span>ML Discovery Pipeline &mdash; CX-118</span><span>59%</span></div><div class="pl-bar"><i data-fill="59" style="background:var(--violet);"></i></div></li>
+          <li><div class="pl-top"><span>Thesis: Predictive Fatigue Modelling</span><span>71%</span></div><div class="pl-bar"><i data-fill="71" style="background:var(--amber);"></i></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BOOKINGS + MESSAGES -->
+    <div class="dash-grid">
+      <div class="panel">
+        <div class="panel-head"><h3>My Lab Bookings</h3><a href="#">Book new time</a></div>
+        <table class="data-table">
+          <thead><tr><th>Instrument / Room</th><th>Date</th><th>Duration</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Wet Lab B &mdash; Bldg. 3</td><td>03 Jul 2026</td><td>4 hrs</td><td><span class="status-pill pending">Pending Approval</span></td></tr>
+            <tr><td>Computation Cluster &mdash; Node 4</td><td>27 Jun 2026</td><td>Full day</td><td><span class="status-pill ok">Confirmed</span></td></tr>
+            <tr><td>Electron Microscope 02</td><td>20 Jun 2026</td><td>2 hrs</td><td><span class="status-pill ok">Completed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Messages</h3><a href="#">Open inbox</a></div>
+        <ul class="activity-feed">
+          <li><div class="dot-time"></div><div><p><b>Dr. Nandakumar</b> reviewed your latest simulation results.</p><span>20 min ago</span></div></li>
+          <li><div class="dot-time"></div><div><p><b>Admin</b> approved your access renewal request.</p><span>3 hrs ago</span></div></li>
+          <li><div class="dot-time"></div><div><p><b>Dr. Bauer</b> shared the MX-027 dataset with you.</p><span>Yesterday</span></div></li>
+          <li><div class="dot-time"></div><div><p><b>System</b> reminder: thesis draft due in 9 days.</p><span>Yesterday</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DATASETS -->
+    <div class="panel" style="margin-top:22px;">
+      <div class="panel-head"><h3>Shared Datasets</h3><a href="#">Browse all</a></div>
+      <table class="data-table">
+        <thead><tr><th>Dataset</th><th>Division</th><th>Size</th><th>Shared By</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td>Fatigue Test Archive 2021&ndash;2026</td><td>Computation</td><td>4.2 GB</td><td>Dr. Nandakumar</td><td><span class="status-pill ok">Full Access</span></td></tr>
+          <tr><td>Ambient Composite Fabrication &mdash; MX-027</td><td>Materials</td><td>1.8 GB</td><td>Dr. Bauer</td><td><span class="status-pill ok">Full Access</span></td></tr>
+          <tr><td>Ocean Sensor Network &mdash; Raw Feed</td><td>Climate</td><td>11.6 GB</td><td>Dr. Rinaldi</td><td><span class="status-pill pending">Read Only</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13/dist/SplitText.min.js"></script>
+<script src="main.js"></script>
+
+<script>
+  /* ── Session display ── */
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var name  = params.get('name');
+    var email = params.get('email');
+
+    if (!name) {
+      try {
+        var sess = JSON.parse(localStorage.getItem('stackly_session') || 'null');
+        if (sess && sess.name) { name = sess.name; email = email || sess.email; }
+      } catch (_) {}
+    }
+    if (!name)  name  = 'Jin Liu';
+    if (!email) email = 'jin.liu@stacklylabs.com';
+
+    function initials(n) {
+      var c = n.replace(/^(Dr|Prof|Mr|Ms|Mrs)\.?\s+/i, '').trim().split(/\s+/);
+      return ((c[0] ? c[0][0] : '') + (c[1] ? c[1][0] : '')).toUpperCase();
+    }
+
+    var ig = initials(name);
+    var firstName = name.split(' ')[0];
+
+    /* Desktop sidebar */
+    document.getElementById('sessAvatar').textContent   = ig;
+    document.getElementById('sessName').textContent     = name;
+    document.getElementById('sessRole').textContent     = 'Researcher · Lab Access';
+    document.getElementById('sessGreeting').textContent = 'Welcome back, ' + firstName;
+    document.getElementById('sessEmail').textContent    = email;
+    document.getElementById('sessSubEmail').textContent = ' · ' + email;
+
+    /* Mobile bar + drawer */
+    document.getElementById('mobName').textContent      = name;
+    document.getElementById('mobAvatar').textContent    = ig;
+    document.getElementById('drawerAvatar').textContent = ig;
+    document.getElementById('drawerName').textContent   = name;
+    document.getElementById('drawerRole').textContent   = 'Researcher · Lab Access';
+
+    /* Logout */
+    document.getElementById('logoutBtn').addEventListener('click', function () {
+      localStorage.removeItem('stackly_session');
+    });
+    document.getElementById('drawerLogout').addEventListener('click', function () {
+      localStorage.removeItem('stackly_session');
+    });
+  })();
+
+  /* ── Drawer open / close ── */
+  (function () {
+    var drawer  = document.getElementById('sideDrawer');
+    var toggle  = document.getElementById('drawerToggle');
+    var close   = document.getElementById('drawerClose');
+    var overlay = document.getElementById('drawerOverlay');
+
+    if (!drawer || !toggle) return;
+
+    function openDrawer()  { drawer.classList.add('open');    document.body.style.overflow = 'hidden'; }
+    function closeDrawer() { drawer.classList.remove('open'); document.body.style.overflow = ''; }
+
+    toggle.addEventListener('click',  openDrawer);
+    close.addEventListener('click',   closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeDrawer(); });
+  })();
+</script>
+</body>
+</html>
